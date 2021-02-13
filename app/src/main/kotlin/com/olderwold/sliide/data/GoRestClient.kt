@@ -2,6 +2,7 @@ package com.olderwold.sliide.data
 
 import android.annotation.SuppressLint
 import com.olderwold.sliide.domain.User
+import com.olderwold.sliide.domain.UserList
 import io.reactivex.Completable
 import io.reactivex.Single
 import okhttp3.OkHttpClient
@@ -15,7 +16,7 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 internal interface GoRestClient {
-    val users: Single<List<User>>
+    val users: Single<UserList>
 
     fun create(user: User): Single<User>
 
@@ -41,25 +42,25 @@ internal interface GoRestClient {
 
             val genderStatusMapper = GenderStatusMapper()
             val userStatusMapper = UserStatusMapper()
+            val userDtoMapper = UserDto.Mapper(genderStatusMapper, userStatusMapper)
             return Impl(
                 api = api,
+                userListMapper = UserListMapper(PaginationMapper(), userDtoMapper),
                 submitMapper = SubmitUserDTO.Mapper(genderStatusMapper, userStatusMapper),
-                userDTOMapper = UserDto.Mapper(genderStatusMapper, userStatusMapper),
+                userDTOMapper = userDtoMapper,
             )
         }
     }
 
     private class Impl(
         private val api: Api,
+        private val userListMapper: UserListMapper,
         private val submitMapper: SubmitUserDTO.Mapper,
         private val userDTOMapper: UserDto.Mapper,
     ) : GoRestClient {
-        override val users: Single<List<User>>
+        override val users: Single<UserList>
             get() {
-                return api.users().map { dto ->
-                    dto.data.filterNotNull()
-                        .mapNotNull(userDTOMapper::map)
-                }
+                return api.users().map(userListMapper::map)
             }
 
         override fun create(user: User): Single<User> {
@@ -78,7 +79,7 @@ internal interface GoRestClient {
 
     private interface Api {
         @GET("/public-api/users")
-        fun users(): Single<UsersResponseDTO>
+        fun users(): Single<UserListDTO>
 
         @POST("/public-api/users")
         fun create(

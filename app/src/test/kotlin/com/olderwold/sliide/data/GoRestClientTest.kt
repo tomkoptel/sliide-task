@@ -27,7 +27,10 @@ class GoRestClientTest {
     @Test
     @OkReplay
     fun get_list_of_users() {
-        api.users.blockingGet().shouldNotBeEmpty()
+        val (users, pagination) = api.users.blockingGet()
+
+        users.shouldNotBeEmpty()
+        pagination.shouldNotBeNull()
     }
 
     @Test

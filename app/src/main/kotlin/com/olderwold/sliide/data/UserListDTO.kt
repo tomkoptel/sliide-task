@@ -2,7 +2,7 @@ package com.olderwold.sliide.data
 
 import com.google.gson.annotations.SerializedName
 
-internal data class UsersResponseDTO(
+internal data class UserListDTO(
     @SerializedName("code")
     val code: Int? = null,
     @SerializedName("data")
