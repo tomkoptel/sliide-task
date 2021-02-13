@@ -46,11 +46,15 @@ android {
 
 dependencies {
     // Align project versions
-    implementation(platform(project(":platform")))
+    platform(project(":platform")).let {
+        implementation(it)
+        testImplementation(it)
+        androidTestImplementation(it)
+    }
     // Align versions of all Kotlin components
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     // Use the Kotlin JDK 8 standard library.
-    implementation(kotlin("kotlin-stdlib-jdk8"))
+    implementation(kotlin("stdlib-jdk8"))
 
     implementation("androidx.core:core-ktx")
     implementation("androidx.appcompat:appcompat")
