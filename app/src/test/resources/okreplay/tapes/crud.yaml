@@ -1,0 +1,89 @@
+!tape
+name: crud
+interactions:
+- recorded: 2021-02-13T19:34:09.972Z
+  request:
+    method: POST
+    uri: https://gorest.co.in/public-api/users
+    headers:
+      Authorization: Bearer 6332def0dc7cda5bf0a7cb46f442f0812d05758f1e061f85b53f796b96b17013
+    body: '{"email":"sliide.sliide@gmail.com","gender":"Male","name":"Sliide","status":"Active"}'
+  response:
+    status: 200
+    headers:
+      Cache-Control: max-age=0, private, must-revalidate
+      Connection: keep-alive
+      Content-Type: application/json; charset=utf-8
+      Date: Sat, 13 Feb 2021 19:34:09 GMT
+      ETag: W/"89326824288ccdc3463a3421839ab340"
+      Expect-CT: enforce; max-age=3600
+      Location: https://gorest.co.in/public-api/users/1714
+      Referrer-Policy: strict-origin-when-cross-origin
+      Server: nginx
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      Transfer-Encoding: chunked
+      Vary: Origin
+      X-Content-Type-Options: nosniff
+      X-Download-Options: noopen
+      X-Frame-Options: sameorigin
+      X-Permitted-Cross-Domain-Policies: none
+      X-Request-Id: e290aeca-1cf5-4000-a4dd-0b1c918c8f27
+      X-Runtime: '0.019363'
+      X-XSS-Protection: 1; mode=block
+    body: '{"code":201,"meta":null,"data":{"id":1714,"name":"Sliide","email":"sliide.sliide@gmail.com","gender":"Male","status":"Active","created_at":"2021-02-14T01:04:09.561+05:30","updated_at":"2021-02-14T01:04:09.561+05:30"}}'
+- recorded: 2021-02-13T19:31:55.939Z
+  request:
+    method: DELETE
+    uri: https://gorest.co.in/public-api/users/1691
+    headers:
+      Authorization: Bearer 6332def0dc7cda5bf0a7cb46f442f0812d05758f1e061f85b53f796b96b17013
+  response:
+    status: 200
+    headers:
+      Cache-Control: max-age=0, private, must-revalidate
+      Connection: keep-alive
+      Content-Type: application/json; charset=utf-8
+      Date: Sat, 13 Feb 2021 19:31:55 GMT
+      ETag: W/"9132bec7c413b5b015be1efe1c6efe72"
+      Expect-CT: enforce; max-age=3600
+      Referrer-Policy: strict-origin-when-cross-origin
+      Server: nginx
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      Transfer-Encoding: chunked
+      Vary: Origin
+      X-Content-Type-Options: nosniff
+      X-Download-Options: noopen
+      X-Frame-Options: sameorigin
+      X-Permitted-Cross-Domain-Policies: none
+      X-Request-Id: 3d1a4803-dc77-4c83-b5d1-f91647eea6d4
+      X-Runtime: '0.018648'
+      X-XSS-Protection: 1; mode=block
+    body: '{"code":204,"meta":null,"data":null}'
+- recorded: 2021-02-13T19:34:10.579Z
+  request:
+    method: DELETE
+    uri: https://gorest.co.in/public-api/users/1714
+    headers:
+      Authorization: Bearer 6332def0dc7cda5bf0a7cb46f442f0812d05758f1e061f85b53f796b96b17013
+  response:
+    status: 200
+    headers:
+      Cache-Control: max-age=0, private, must-revalidate
+      Connection: keep-alive
+      Content-Type: application/json; charset=utf-8
+      Date: Sat, 13 Feb 2021 19:34:10 GMT
+      ETag: W/"9132bec7c413b5b015be1efe1c6efe72"
+      Expect-CT: enforce; max-age=3600
+      Referrer-Policy: strict-origin-when-cross-origin
+      Server: nginx
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      Transfer-Encoding: chunked
+      Vary: Origin
+      X-Content-Type-Options: nosniff
+      X-Download-Options: noopen
+      X-Frame-Options: sameorigin
+      X-Permitted-Cross-Domain-Policies: none
+      X-Request-Id: e7b43919-82ed-4267-9009-9932500ead97
+      X-Runtime: '0.019165'
+      X-XSS-Protection: 1; mode=block
+    body: '{"code":204,"meta":null,"data":null}'
