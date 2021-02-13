@@ -19,14 +19,14 @@ android {
     sourceSets {
         getByName("main").java.srcDirs(
             "src/main/kotlin",
-            "src/main/kotlinX",
+            "src/main/kotlinX"
         )
         getByName("androidTest").java.srcDirs(
-            "src/androidTest/kotlin",
+            "src/androidTest/kotlin"
         )
         getByName("test").java.srcDirs(
             "src/test/kotlin",
-            "src/test/kotlinX",
+            "src/test/kotlinX"
         )
     }
     buildTypes {
