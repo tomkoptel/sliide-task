@@ -1,5 +1,6 @@
 package com.olderwold.sliide.data
 
+import com.olderwold.sliide.domain.User
 import okreplay.OkReplay
 import okreplay.OkReplayConfig
 import okreplay.OkReplayInterceptor
@@ -25,5 +26,18 @@ class GoRestClientTest {
     @OkReplay
     fun get_list_of_users() {
         api.users.blockingGet()
+    }
+
+    @Test
+    @OkReplay
+    fun crud() {
+        val newUser = User.new {
+            name = "Sliide"
+            email = "sliide.sliide@gmail.com"
+            gender = User.Gender.MALE
+            status = User.Status.ACTIVE
+        }
+        val createdUser = api.create(newUser).blockingGet()
+        api.delete(createdUser.id).blockingGet()
     }
 }
