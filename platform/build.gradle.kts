@@ -39,5 +39,7 @@ dependencies {
         api("io.reactivex.rxjava2:rxjava:2.2.21")
         api("io.reactivex.rxjava2:rxandroid:2.1.1")
         api("com.github.pwittchen:reactivenetwork-rx2:3.0.8")
+
+        api("com.android.tools:desugar_jdk_libs:1.0.9")
     }
 }

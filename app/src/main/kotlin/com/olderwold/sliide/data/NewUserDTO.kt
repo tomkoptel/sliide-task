@@ -2,6 +2,7 @@ package com.olderwold.sliide.data
 
 import com.google.gson.annotations.SerializedName
 import com.olderwold.sliide.domain.User
+import java.time.LocalDateTime
 
 internal data class NewUserDTO(
     @SerializedName("code")
@@ -13,7 +14,7 @@ internal data class NewUserDTO(
 ) {
     data class Data(
         @SerializedName("created_at")
-        val createdAt: String? = null,
+        val createdAt: LocalDateTime? = null,
         @SerializedName("email")
         val email: String? = null,
         @SerializedName("gender")
@@ -25,7 +26,7 @@ internal data class NewUserDTO(
         @SerializedName("status")
         val status: String? = null,
         @SerializedName("updated_at")
-        val updatedAt: String? = null
+        val updatedAt: LocalDateTime? = null
     )
 
     class Mapper(
@@ -42,7 +43,9 @@ internal data class NewUserDTO(
                 id = id,
                 email = data.email,
                 gender = gender,
-                status = status
+                status = status,
+                createdAt = data.createdAt,
+                updatedAt = data.updatedAt,
             )
         }
     }

@@ -1,5 +1,8 @@
 package com.olderwold.sliide.data
 
+import android.annotation.SuppressLint
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonDeserializer
 import com.olderwold.sliide.domain.User
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -12,6 +15,11 @@ import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
+
 
 internal interface GoRestClient {
     val users: Single<List<User>>
@@ -21,10 +29,13 @@ internal interface GoRestClient {
     fun delete(userId: String): Completable
 
     companion object {
+        @SuppressLint("NewApi")
         operator fun invoke(clientBuilder: OkHttpClient.Builder.() -> Unit = {}): GoRestClient {
+            val gson = GsonFactory().create()
+
             val api = Retrofit.Builder()
                 .baseUrl("https://gorest.co.in")
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(
                     OkHttpClient.Builder()

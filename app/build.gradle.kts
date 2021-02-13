@@ -42,6 +42,8 @@ android {
         }
     }
     compileOptions {
+        // Flag to enable support for the new language APIs
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
@@ -63,6 +65,7 @@ dependencies {
     // Align project versions
     platform(project(":platform")).let {
         implementation(it)
+        coreLibraryDesugaring(it)
         testImplementation(it)
         androidTestImplementation(it)
     }
@@ -70,6 +73,9 @@ dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     // Use the Kotlin JDK 8 standard library.
     implementation(kotlin("stdlib-jdk8"))
+
+    // Add support for Java 8 Time API
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs")
 
     implementation("androidx.core:core-ktx")
     implementation("androidx.appcompat:appcompat")
