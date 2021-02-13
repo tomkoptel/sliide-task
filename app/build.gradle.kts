@@ -21,8 +21,10 @@ android {
             "src/main/kotlin",
             "src/main/kotlinX"
         )
+        getByName("androidTest").java.srcDirs(
+            "src/androidTest/kotlin"
+        )
         getByName("test").java.srcDirs(
-            "src/androidTest/kotlin",
             "src/test/kotlin",
             "src/test/kotlinX"
         )
