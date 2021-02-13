@@ -6,6 +6,8 @@ import okreplay.OkReplayConfig
 import okreplay.OkReplayInterceptor
 import okreplay.RecorderRule
 import okreplay.TapeMode
+import org.amshove.kluent.shouldNotBeEmpty
+import org.amshove.kluent.shouldNotBeNull
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
@@ -25,7 +27,7 @@ class GoRestClientTest {
     @Test
     @OkReplay
     fun get_list_of_users() {
-        api.users.blockingGet()
+        api.users.blockingGet().shouldNotBeEmpty()
     }
 
     @Test
@@ -36,8 +38,9 @@ class GoRestClientTest {
             email = "sliide.sliide@gmail.com"
             gender = User.Gender.MALE
             status = User.Status.ACTIVE
-        }
-        val createdUser = api.create(newUser).blockingGet()
-        api.delete(createdUser.id).blockingGet()
+        }.let { api.create(it).blockingGet() }
+        newUser.shouldNotBeNull()
+
+        api.delete(newUser.id).blockingGet()
     }
 }

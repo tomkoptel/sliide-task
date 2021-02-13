@@ -9,7 +9,7 @@ import java.time.LocalDateTime
 import java.time.ZonedDateTime
 
 @SuppressLint("NewApi")
-object LocalDateTimeDeserializer: JsonDeserializer<LocalDateTime?> {
+object LocalDateTimeDeserializer : JsonDeserializer<LocalDateTime?> {
     @Suppress("ReturnCount")
     override fun deserialize(
         json: JsonElement?,

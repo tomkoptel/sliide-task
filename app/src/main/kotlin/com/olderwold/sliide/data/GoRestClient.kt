@@ -1,8 +1,6 @@
 package com.olderwold.sliide.data
 
 import android.annotation.SuppressLint
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonDeserializer
 import com.olderwold.sliide.domain.User
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -15,11 +13,6 @@ import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.ZonedDateTime
-
 
 internal interface GoRestClient {
     val users: Single<List<User>>
@@ -50,30 +43,31 @@ internal interface GoRestClient {
             val userStatusMapper = UserStatusMapper()
             return Impl(
                 api = api,
-                userMapper = UserMapper(),
                 submitMapper = SubmitUserDTO.Mapper(genderStatusMapper, userStatusMapper),
-                newUserDTOMapper = NewUserDTO.Mapper(genderStatusMapper, userStatusMapper),
+                userDTOMapper = UserDto.Mapper(genderStatusMapper, userStatusMapper),
             )
         }
     }
 
     private class Impl(
         private val api: Api,
-        private val userMapper: UserMapper,
         private val submitMapper: SubmitUserDTO.Mapper,
-        private val newUserDTOMapper: NewUserDTO.Mapper,
+        private val userDTOMapper: UserDto.Mapper,
     ) : GoRestClient {
         override val users: Single<List<User>>
             get() {
                 return api.users().map { dto ->
-                    userMapper.map(dto.data)
+                    dto.data.filterNotNull()
+                        .mapNotNull(userDTOMapper::map)
                 }
             }
 
         override fun create(user: User): Single<User> {
             return Single.fromCallable { submitMapper.map(user) }
                 .flatMap { submitData ->
-                    api.create(submitData).map(newUserDTOMapper::map)
+                    api.create(submitData).map { response ->
+                        userDTOMapper.map(response.data)
+                    }
                 }
         }
 
