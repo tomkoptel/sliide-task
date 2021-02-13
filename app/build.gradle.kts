@@ -15,6 +15,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
+
+        val gorestApiAccessToken: String? by project
+        buildConfigField("String", "GOREST_API_TOKEN", "\"$gorestApiAccessToken\"")
     }
     sourceSets {
         getByName("main").java.srcDirs(
