@@ -17,8 +17,15 @@ android {
         testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
     }
     sourceSets {
-        getByName("main").java.srcDirs("src/main/kotlin", "src/main/kotlinX")
-        getByName("test").java.srcDirs("src/test/kotlin", "src/test/kotlinX")
+        getByName("main").java.srcDirs(
+            "src/main/kotlin",
+            "src/main/kotlinX"
+        )
+        getByName("test").java.srcDirs(
+            "src/androidTest/kotlin",
+            "src/test/kotlin",
+            "src/test/kotlinX"
+        )
     }
     buildTypes {
         getByName("release") {
