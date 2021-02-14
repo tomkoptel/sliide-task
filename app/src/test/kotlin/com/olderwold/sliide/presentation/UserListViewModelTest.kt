@@ -1,10 +1,9 @@
 package com.olderwold.sliide.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.olderwold.sliide.data.GoRestClient
+import com.olderwold.sliide.domain.GetLatestUserList
 import com.olderwold.sliide.domain.User
 import com.olderwold.sliide.domain.UserList
-import com.olderwold.sliide.rx.ImmediateSchedulers
 import com.olderwold.sliide.rx.RxOperators
 import io.mockk.every
 import io.mockk.mockk
@@ -16,9 +15,9 @@ import org.junit.Rule
 import org.junit.Test
 
 class UserListViewModelTest {
-    private val goRestClient: GoRestClient = mockk()
-    private val rxOperators: RxOperators = mockk()
-    private val viewModel = UserListViewModel(goRestClient, ImmediateSchedulers(), rxOperators)
+    private val getLatestUserList = mockk<GetLatestUserList>()
+    private val rxOperators = mockk<RxOperators>()
+    private val viewModel = UserListViewModel(getLatestUserList, rxOperators)
     private val mockUser = mockk<User>()
 
     @get:Rule
@@ -32,7 +31,7 @@ class UserListViewModelTest {
         viewModel.load()
         viewModel.load()
 
-        verify(exactly = 1) { goRestClient.users }
+        verify(exactly = 1) { getLatestUserList() }
     }
 
     @Test
@@ -58,7 +57,7 @@ class UserListViewModelTest {
     fun `when API returns an error`() {
         val nullPointerException = NullPointerException("Snap!")
         givenConnectedToNetwork()
-        every { goRestClient.users } returns Single.error(nullPointerException)
+        every { getLatestUserList() } returns Single.error(nullPointerException)
 
         viewModel.load()
 
@@ -66,7 +65,7 @@ class UserListViewModelTest {
     }
 
     private fun givenApiReturnsResult() {
-        every { goRestClient.users } returns Single.just(
+        every { getLatestUserList() } returns Single.just(
             UserList(
                 users = listOf(mockUser),
                 pagination = mockk()

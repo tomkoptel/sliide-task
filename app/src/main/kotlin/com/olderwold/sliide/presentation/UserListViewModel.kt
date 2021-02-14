@@ -3,17 +3,15 @@ package com.olderwold.sliide.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.olderwold.sliide.data.GoRestClient
+import com.olderwold.sliide.domain.GetLatestUserList
 import com.olderwold.sliide.domain.User
 import com.olderwold.sliide.rx.RxOperators
-import com.olderwold.sliide.rx.Schedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 
 internal class UserListViewModel(
-    private val goRestClient: GoRestClient,
-    private val schedulers: Schedulers,
+    private val getLatestUserList: GetLatestUserList,
     private val rxOperators: RxOperators,
 ) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
@@ -32,16 +30,14 @@ internal class UserListViewModel(
         rxOperators.onConnected()
             .take(1)
             .doOnSubscribe { _state.postValue(State.Loading) }
-            .flatMapSingle { goRestClient.users }
+            .flatMapSingle { getLatestUserList() }
             .singleOrError()
-            .subscribeOn(schedulers.io)
-            .observeOn(schedulers.ui)
             .subscribeBy(
                 onSuccess = { userList ->
-                    _state.value = State.Loaded(userList.users)
+                    _state.postValue(State.Loaded(userList.users))
                 },
                 onError = { error ->
-                    _state.value = State.Error(error)
+                    _state.postValue(State.Error(error))
                 }
             )
             .addTo(compositeDisposable)

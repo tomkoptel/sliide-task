@@ -35,6 +35,15 @@ class GoRestClientTest {
 
     @Test
     @OkReplay
+    fun get_users_from_specific_page() {
+        val (users, pagination) = api.users(page = 2).blockingGet()
+
+        users.shouldNotBeEmpty()
+        pagination.shouldNotBeNull()
+    }
+
+    @Test
+    @OkReplay
     fun crud() {
         val newUser = User.new {
             name = "Sliide"

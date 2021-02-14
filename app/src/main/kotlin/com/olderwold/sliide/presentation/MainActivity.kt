@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.olderwold.sliide.R
 import com.olderwold.sliide.data.GoRestClient
+import com.olderwold.sliide.data.NetworkGetLatestUserList
 import com.olderwold.sliide.rx.RxOperators
 import com.olderwold.sliide.rx.Schedulers
 
@@ -24,7 +25,8 @@ class MainActivity : AppCompatActivity() {
         object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return UserListViewModel(GoRestClient(), Schedulers, RxOperators(context)) as T
+                val getLatestUserList = NetworkGetLatestUserList(GoRestClient(), Schedulers)
+                return UserListViewModel(getLatestUserList, RxOperators(context, Schedulers)) as T
             }
         }
     }
