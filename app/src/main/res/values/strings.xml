@@ -8,4 +8,7 @@
 
     <string name="email_error_empty">Email should not be empty</string>
     <string name="name_error_empty">Name should not be empty</string>
+
+    <string name="dialog_delete_user_title">Delete User</string>
+    <string name="dialog_delete_user_message">Do you want to delete user %s?</string>
 </resources>

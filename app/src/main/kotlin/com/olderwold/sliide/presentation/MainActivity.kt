@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var errorText: TextView
     private lateinit var fab: FloatingActionButton
-    private val adapter = UserListAdapter()
+    private lateinit var adapter: UserListAdapter
 
     private val viewModel by viewModels<UserListViewModel>()
 
@@ -60,7 +61,22 @@ class MainActivity : AppCompatActivity() {
             recyclerView.addItemDecoration(verticalDivider)
         }
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        adapter = UserListAdapter(onLongClick = ::confirmDelete)
         recyclerView.adapter = adapter
+    }
+
+    // TODO it is naive approach. Replace with DialogFragment
+    private fun confirmDelete(item: UserItem) {
+        AlertDialog.Builder(this)
+            .setTitle(R.string.dialog_delete_user_title)
+            .setMessage(getString(R.string.dialog_delete_user_message, item.user.name))
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                viewModel.delete(item)
+            }
+            .setNegativeButton(android.R.string.cancel) { _, _ -> }
+            .create()
+            .show()
     }
 
     private fun bindViewModel() {
