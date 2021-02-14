@@ -13,6 +13,7 @@ import io.reactivex.Observable
 internal class RxOperators(
     private val application: Application
 ) {
+    // TODO hide Connectivity API from the consumer
     fun onConnected(): Observable<Connectivity> {
         return ReactiveNetwork
             .observeNetworkConnectivity(application)
