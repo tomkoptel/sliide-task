@@ -1,6 +1,17 @@
 package com.olderwold.sliide.data
 
 import android.annotation.SuppressLint
+import com.olderwold.sliide.data.dto.DeleteUserDto
+import com.olderwold.sliide.data.dto.NewUserDTO
+import com.olderwold.sliide.data.dto.SubmitUserDTO
+import com.olderwold.sliide.data.dto.UserListDTO
+import com.olderwold.sliide.data.dto.UserMapper
+import com.olderwold.sliide.data.gson.GsonFactory
+import com.olderwold.sliide.data.mapper.GenderStatusMapper
+import com.olderwold.sliide.data.mapper.PaginationMapper
+import com.olderwold.sliide.data.mapper.UserListMapper
+import com.olderwold.sliide.data.mapper.UserStatusMapper
+import com.olderwold.sliide.data.mapper.SubmitUserMapper
 import com.olderwold.sliide.domain.User
 import com.olderwold.sliide.domain.UserList
 import dagger.Provides
@@ -49,11 +60,11 @@ internal interface GoRestClient {
 
             val genderStatusMapper = GenderStatusMapper()
             val userStatusMapper = UserStatusMapper()
-            val userDtoMapper = UserDto.Mapper(genderStatusMapper, userStatusMapper)
+            val userDtoMapper = UserMapper(genderStatusMapper, userStatusMapper)
             return Impl(
                 api = api,
                 userListMapper = UserListMapper(PaginationMapper(), userDtoMapper),
-                submitMapper = SubmitUserDTO.Mapper(genderStatusMapper, userStatusMapper),
+                submitMapper = SubmitUserMapper(genderStatusMapper, userStatusMapper),
                 userDTOMapper = userDtoMapper,
             )
         }
@@ -62,8 +73,8 @@ internal interface GoRestClient {
     private class Impl(
         private val api: Api,
         private val userListMapper: UserListMapper,
-        private val submitMapper: SubmitUserDTO.Mapper,
-        private val userDTOMapper: UserDto.Mapper,
+        private val submitMapper: SubmitUserMapper,
+        private val userDTOMapper: UserMapper,
     ) : GoRestClient {
         override fun users(page: Int): Single<UserList> {
             return api.users(page).map(userListMapper::map)

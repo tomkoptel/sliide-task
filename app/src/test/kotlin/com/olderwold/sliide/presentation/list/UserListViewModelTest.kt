@@ -1,9 +1,10 @@
-package com.olderwold.sliide.presentation
+package com.olderwold.sliide.presentation.list
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.olderwold.sliide.domain.GetLatestUserList
 import com.olderwold.sliide.domain.User
 import com.olderwold.sliide.domain.UserList
+import com.olderwold.sliide.domain.usecase.DeleteUser
+import com.olderwold.sliide.domain.usecase.GetLatestUserList
 import com.olderwold.sliide.rx.RxOperators
 import io.mockk.every
 import io.mockk.mockk
@@ -17,8 +18,10 @@ import org.junit.Test
 class UserListViewModelTest {
     private val getLatestUserList = mockk<GetLatestUserList>()
     private val rxOperators = mockk<RxOperators>()
-    private val viewModel = UserListViewModel(getLatestUserList, rxOperators)
+    private val deleteUser = mockk<DeleteUser>()
+    private val viewModel = UserListViewModel(getLatestUserList, deleteUser, rxOperators)
     private val mockUser = mockk<User>()
+    private val userItem = UserItem(mockUser, toBeDeleted = false)
 
     @get:Rule
     val rule = InstantTaskExecutorRule()
@@ -41,7 +44,7 @@ class UserListViewModelTest {
 
         viewModel.load()
 
-        viewModel.state.value shouldBeEqualTo UserListViewModel.State.Loaded(listOf(mockUser))
+        viewModel.state.value shouldBeEqualTo UserListViewModel.State.Loaded(listOf(userItem))
     }
 
     @Test

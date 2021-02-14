@@ -1,6 +1,7 @@
-package com.olderwold.sliide.data
+package com.olderwold.sliide.data.usecase
 
-import com.olderwold.sliide.domain.CreateUser
+import com.olderwold.sliide.data.GoRestClient
+import com.olderwold.sliide.domain.usecase.CreateUser
 import com.olderwold.sliide.domain.User
 import com.olderwold.sliide.rx.Schedulers
 import dagger.Binds

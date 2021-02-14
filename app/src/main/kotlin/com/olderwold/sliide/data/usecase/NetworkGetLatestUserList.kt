@@ -1,6 +1,7 @@
-package com.olderwold.sliide.data
+package com.olderwold.sliide.data.usecase
 
-import com.olderwold.sliide.domain.GetLatestUserList
+import com.olderwold.sliide.data.GoRestClient
+import com.olderwold.sliide.domain.usecase.GetLatestUserList
 import com.olderwold.sliide.domain.Pagination
 import com.olderwold.sliide.domain.UserList
 import com.olderwold.sliide.rx.Schedulers

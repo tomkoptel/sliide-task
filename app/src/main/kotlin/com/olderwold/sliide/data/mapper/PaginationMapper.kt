@@ -1,5 +1,6 @@
-package com.olderwold.sliide.data
+package com.olderwold.sliide.data.mapper
 
+import com.olderwold.sliide.data.dto.UserListDTO
 import com.olderwold.sliide.domain.Pagination
 
 internal class PaginationMapper {

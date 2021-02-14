@@ -1,4 +1,4 @@
-package com.olderwold.sliide.data
+package com.olderwold.sliide.data.mapper
 
 import com.olderwold.sliide.domain.User
 import java.util.Locale

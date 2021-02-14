@@ -14,7 +14,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.observeSingleEvents
 import com.olderwold.sliide.R
-import com.olderwold.sliide.presentation.UserListViewModel
+import com.olderwold.sliide.presentation.list.UserListViewModel
 
 internal class CreateUserDialogFragment : DialogFragment(), LifecycleObserver {
     companion object {

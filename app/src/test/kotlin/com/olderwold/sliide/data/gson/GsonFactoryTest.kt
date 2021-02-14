@@ -1,4 +1,4 @@
-package com.olderwold.sliide.data
+package com.olderwold.sliide.data.gson
 
 import com.google.gson.annotations.SerializedName
 import org.amshove.kluent.shouldBeNull

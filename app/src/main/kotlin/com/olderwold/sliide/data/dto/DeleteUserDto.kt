@@ -1,12 +1,12 @@
-package com.olderwold.sliide.data
+package com.olderwold.sliide.data.dto
 
 import com.google.gson.annotations.SerializedName
 
-internal data class NewUserDTO(
+internal data class DeleteUserDto(
     @SerializedName("code")
     val code: Int? = null,
     @SerializedName("data")
-    val data: UserDto? = null,
+    val data: Any? = null,
     @SerializedName("meta")
     val meta: Any? = null
 )
