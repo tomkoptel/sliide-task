@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.olderwold.sliide.rx
 
 import android.app.Application
