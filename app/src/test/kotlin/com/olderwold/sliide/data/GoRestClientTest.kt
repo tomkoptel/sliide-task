@@ -46,10 +46,10 @@ class GoRestClientTest {
     @OkReplay
     fun crud() {
         val newUser = User.new {
-            name = "Sliide"
-            email = "sliide.sliide@gmail.com"
-            gender = User.Gender.MALE
-            status = User.Status.ACTIVE
+            it.name = "Sliide"
+            it.email = "sliide.sliide@gmail.com"
+            it.gender = User.Gender.MALE
+            it.status = User.Status.ACTIVE
         }.let { api.create(it).blockingGet() }
         newUser.shouldNotBeNull()
 

@@ -4,6 +4,7 @@ plugins {
 
 dependencies {
     constraints {
+        api("androidx.fragment:fragment-ktx:1.3.0")
         api("androidx.activity:activity-ktx:1.2.0")
         api("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
         api("androidx.core:core-ktx:1.3.2")

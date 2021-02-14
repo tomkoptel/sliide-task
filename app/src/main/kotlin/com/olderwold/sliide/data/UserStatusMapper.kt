@@ -14,12 +14,12 @@ internal class UserStatusMapper(
 
     fun map(status: String?): User.Status {
         return if (status == null) {
-            User.Status.UNKNOWN
+            User.Status.INACTIVE
         } else {
             try {
                 User.Status.valueOf(status.toUpperCase(expectedLocale))
             } catch (ex: IllegalArgumentException) {
-                User.Status.UNKNOWN
+                User.Status.INACTIVE
             }
         }
     }

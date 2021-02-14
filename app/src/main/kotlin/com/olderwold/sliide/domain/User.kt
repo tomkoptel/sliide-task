@@ -7,13 +7,13 @@ internal data class User(
     val id: String,
     val name: String? = null,
     val email: String? = null,
-    val status: Status = Status.UNKNOWN,
-    val gender: Gender = Gender.OTHER,
+    val status: Status = Status.ACTIVE,
+    val gender: Gender = Gender.MALE,
     val createdAt: LocalDateTime? = null,
     val updatedAt: LocalDateTime? = null,
 ) {
     companion object {
-        fun new(build: Builder.() -> Unit): User {
+        fun new(build: (Builder) -> Unit): User {
             return Builder().apply(build).new()
         }
     }
@@ -21,8 +21,8 @@ internal data class User(
     class Builder {
         var name: String? = null
         var email: String? = null
-        var status: Status = Status.UNKNOWN
-        var gender: Gender = Gender.OTHER
+        var status: Status = Status.ACTIVE
+        var gender: Gender = Gender.MALE
 
         fun new() = User(
             id = UUID.randomUUID().toString(),
@@ -35,12 +35,11 @@ internal data class User(
 
     enum class Status {
         ACTIVE,
-        UNKNOWN;
+        INACTIVE;
     }
 
     enum class Gender {
         FEMALE,
-        MALE,
-        OTHER;
+        MALE;
     }
 }

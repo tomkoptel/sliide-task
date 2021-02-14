@@ -14,12 +14,12 @@ internal class GenderStatusMapper(
 
     fun map(gender: String?): User.Gender {
         return if (gender == null) {
-            User.Gender.OTHER
+            User.Gender.MALE
         } else {
             try {
                 User.Gender.valueOf(gender.toUpperCase(expectedLocale))
             } catch (ex: IllegalArgumentException) {
-                User.Gender.OTHER
+                User.Gender.MALE
             }
         }
     }
