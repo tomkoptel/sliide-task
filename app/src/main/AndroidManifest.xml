@@ -3,6 +3,7 @@
     package="com.olderwold.sliide">
 
     <application
+        android:name=".presentation.MainApp"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"

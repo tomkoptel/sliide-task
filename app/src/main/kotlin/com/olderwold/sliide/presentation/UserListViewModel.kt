@@ -6,11 +6,14 @@ import androidx.lifecycle.ViewModel
 import com.olderwold.sliide.domain.GetLatestUserList
 import com.olderwold.sliide.domain.User
 import com.olderwold.sliide.rx.RxOperators
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
+import javax.inject.Inject
 
-internal class UserListViewModel(
+@HiltViewModel
+internal class UserListViewModel @Inject constructor(
     private val getLatestUserList: GetLatestUserList,
     private val rxOperators: RxOperators,
 ) : ViewModel() {

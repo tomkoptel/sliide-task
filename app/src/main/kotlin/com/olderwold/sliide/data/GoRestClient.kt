@@ -3,6 +3,9 @@ package com.olderwold.sliide.data
 import android.annotation.SuppressLint
 import com.olderwold.sliide.domain.User
 import com.olderwold.sliide.domain.UserList
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import io.reactivex.Completable
 import io.reactivex.Single
 import okhttp3.OkHttpClient
@@ -100,5 +103,14 @@ internal interface GoRestClient {
         fun delete(
             @Path("userId") userId: String
         ): Single<DeleteUserDto>
+    }
+
+    @InstallIn(SingletonComponent::class)
+    @dagger.Module
+    class Module {
+        @Provides
+        fun client(): GoRestClient {
+            return GoRestClient()
+        }
     }
 }
