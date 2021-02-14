@@ -18,7 +18,7 @@ import com.olderwold.sliide.presentation.UserListViewModel
 
 internal class CreateUserDialogFragment : DialogFragment(), LifecycleObserver {
     companion object {
-         val TAG = CreateUserDialogFragment::class.simpleName
+        val TAG = CreateUserDialogFragment::class.simpleName
     }
 
     private lateinit var nameEditText: EditText

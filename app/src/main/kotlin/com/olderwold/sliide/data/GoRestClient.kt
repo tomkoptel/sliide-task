@@ -112,9 +112,11 @@ internal interface GoRestClient {
         @Provides
         fun client(): GoRestClient {
             return GoRestClient {
-                addInterceptor(HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
-                })
+                addInterceptor(
+                    HttpLoggingInterceptor().apply {
+                        level = HttpLoggingInterceptor.Level.BODY
+                    }
+                )
             }
         }
     }

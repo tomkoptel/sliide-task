@@ -12,7 +12,7 @@ import javax.inject.Inject
 internal class NetworkCreateUser @Inject constructor(
     private val goRestClient: GoRestClient,
     private val schedulers: Schedulers,
-): CreateUser {
+) : CreateUser {
     override fun invoke(user: User): Completable {
         return goRestClient.create(user).ignoreElement()
             .subscribeOn(schedulers.io)

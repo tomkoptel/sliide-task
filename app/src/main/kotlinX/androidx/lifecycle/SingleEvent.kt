@@ -40,7 +40,7 @@ open class SingleEvent<out T>(private val content: T) {
     }
 }
 
-fun <T: Any> T.toEvent() = SingleEvent(this)
+fun <T : Any> T.toEvent() = SingleEvent(this)
 
 fun <T> LiveData<SingleEvent<T>?>.observeSingleEvents(owner: LifecycleOwner, observer: (event: T) -> Unit) {
     this.observe(owner, Observer { it?.getContentIfNotHandled()?.let(observer) })

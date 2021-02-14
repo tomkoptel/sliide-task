@@ -45,10 +45,12 @@ internal class CreateUserViewModel @Inject constructor(
             .take(1)
             .doOnSubscribe { _state.postValue(State.Sending.toEvent()) }
             .flatMapCompletable {
-                createUser(User.new {
-                    it.email = email
-                    it.name = name
-                })
+                createUser(
+                    User.new {
+                        it.email = email
+                        it.name = name
+                    }
+                )
             }
             .subscribeBy(
                 onComplete = {

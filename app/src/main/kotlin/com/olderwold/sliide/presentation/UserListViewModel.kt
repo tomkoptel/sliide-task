@@ -2,13 +2,11 @@ package com.olderwold.sliide.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.olderwold.sliide.domain.GetLatestUserList
 import com.olderwold.sliide.domain.User
 import com.olderwold.sliide.rx.RxOperators
 import com.olderwold.sliide.rx.RxViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
