@@ -9,8 +9,9 @@ import com.github.pwittchen.reactivenetwork.library.rx2.Connectivity
 import com.github.pwittchen.reactivenetwork.library.rx2.ConnectivityPredicate
 import com.github.pwittchen.reactivenetwork.library.rx2.ReactiveNetwork
 import io.reactivex.Observable
+import javax.inject.Inject
 
-internal class RxOperators(
+internal class RxOperators @Inject constructor(
     private val application: Application,
     private val schedulers: Schedulers
 ) {

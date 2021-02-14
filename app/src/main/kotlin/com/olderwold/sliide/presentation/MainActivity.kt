@@ -1,6 +1,5 @@
 package com.olderwold.sliide.presentation
 
-import android.app.Application
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
@@ -8,32 +7,20 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.olderwold.sliide.R
-import com.olderwold.sliide.data.GoRestClient
-import com.olderwold.sliide.data.NetworkGetLatestUserList
-import com.olderwold.sliide.rx.RxOperators
-import com.olderwold.sliide.rx.Schedulers
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private val viewModel by viewModels<UserListViewModel> {
-        val context = applicationContext as Application
-        object : ViewModelProvider.Factory {
-            @Suppress("UNCHECKED_CAST")
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                val getLatestUserList = NetworkGetLatestUserList(GoRestClient(), Schedulers)
-                return UserListViewModel(getLatestUserList, RxOperators(context, Schedulers)) as T
-            }
-        }
-    }
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var errorText: TextView
     private val adapter = UserListAdapter()
+
+    private val viewModel by viewModels<UserListViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

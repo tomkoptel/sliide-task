@@ -11,6 +11,7 @@ buildscript {
     }
     dependencies {
         classpath("com.android.tools.build:gradle:4.1.2")
+        classpath("com.google.dagger:hilt-android-gradle-plugin:2.32-alpha")
     }
 }
 

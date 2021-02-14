@@ -47,5 +47,16 @@ dependencies {
         api("com.github.pwittchen:reactivenetwork-rx2:3.0.8")
 
         api("com.android.tools:desugar_jdk_libs:1.0.9")
+
+        val hiltVersion = "2.32-alpha"
+        val hiltViewModelVersion = "1.0.0-alpha03"
+
+        api("com.google.dagger:hilt-android:$hiltVersion")
+        api("com.google.dagger:hilt-compiler:$hiltVersion")
+        api("com.google.dagger:hilt-core:$hiltVersion")
+        api("com.google.dagger:hilt-android-testing:$hiltVersion")
+        api("androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewModelVersion")
+        api("androidx.hilt:hilt-compiler:$hiltViewModelVersion")
+        api("androidx.hilt:hilt-common:$hiltViewModelVersion")
     }
 }

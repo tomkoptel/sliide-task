@@ -1,6 +1,9 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -64,6 +67,7 @@ android {
 dependencies {
     // Align project versions
     platform(project(":platform")).let {
+        kapt(it)
         implementation(it)
         coreLibraryDesugaring(it)
         testImplementation(it)
@@ -77,13 +81,24 @@ dependencies {
     // Add support for Java 8 Time API
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs")
 
+    // region Dagger Hilt
+    implementation("androidx.hilt:hilt-lifecycle-viewmodel")
+    kapt("androidx.hilt:hilt-compiler")
+    implementation("com.google.dagger:hilt-android")
+    kapt("com.google.dagger:hilt-compiler")
+    testImplementation("com.google.dagger:hilt-android-testing")
+    // endregion
+
+    // region Jetpack & UI specific
     implementation("androidx.core:core-ktx")
     implementation("androidx.activity:activity-ktx")
     implementation("androidx.appcompat:appcompat")
     implementation("androidx.constraintlayout:constraintlayout")
 
     implementation("com.google.android.material:material")
+    // endregion
 
+    // region Network
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
     implementation("com.squareup.retrofit2:retrofit")
@@ -95,7 +110,9 @@ dependencies {
     implementation("io.reactivex.rxjava2:rxandroid")
     implementation("io.reactivex.rxjava2:rxkotlin")
     implementation("com.github.pwittchen:reactivenetwork-rx2")
+    // endregion
 
+    // region Unit Tests
     testImplementation("junit:junit")
     testImplementation("org.amshove.kluent:kluent")
     testImplementation("io.mockk:mockk")
@@ -103,7 +120,10 @@ dependencies {
     testImplementation("com.airbnb.okreplay:okreplay")
     testImplementation("com.airbnb.okreplay:junit")
     testImplementation("androidx.arch.core:core-testing")
+    // endregion
 
+    // region Android Instrumentation Tests
     androidTestImplementation("androidx.test.ext:junit")
     androidTestImplementation("androidx.test.espresso:espresso-core")
+    // endregion
 }
