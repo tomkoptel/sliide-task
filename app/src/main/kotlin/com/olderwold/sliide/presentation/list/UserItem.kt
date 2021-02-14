@@ -1,4 +1,4 @@
-package com.olderwold.sliide.presentation
+package com.olderwold.sliide.presentation.list
 
 import com.olderwold.sliide.domain.User
 

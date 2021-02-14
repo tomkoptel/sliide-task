@@ -1,9 +1,9 @@
-package com.olderwold.sliide.presentation
+package com.olderwold.sliide.presentation.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.olderwold.sliide.domain.DeleteUser
-import com.olderwold.sliide.domain.GetLatestUserList
+import com.olderwold.sliide.domain.usecase.DeleteUser
+import com.olderwold.sliide.domain.usecase.GetLatestUserList
 import com.olderwold.sliide.rx.RxOperators
 import com.olderwold.sliide.rx.RxViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,4 +1,4 @@
-package com.olderwold.sliide.data
+package com.olderwold.sliide.data.gson
 
 import android.annotation.SuppressLint
 import com.google.gson.Gson

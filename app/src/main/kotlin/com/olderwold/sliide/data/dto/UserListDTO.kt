@@ -1,4 +1,4 @@
-package com.olderwold.sliide.data
+package com.olderwold.sliide.data.dto
 
 import com.google.gson.annotations.SerializedName
 

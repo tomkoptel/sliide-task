@@ -1,4 +1,4 @@
-package com.olderwold.sliide.presentation
+package com.olderwold.sliide.presentation.list
 
 import android.view.LayoutInflater
 import android.view.View
