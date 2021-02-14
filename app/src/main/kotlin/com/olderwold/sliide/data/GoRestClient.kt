@@ -9,6 +9,7 @@ import dagger.hilt.components.SingletonComponent
 import io.reactivex.Completable
 import io.reactivex.Single
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -110,7 +111,11 @@ internal interface GoRestClient {
     class Module {
         @Provides
         fun client(): GoRestClient {
-            return GoRestClient()
+            return GoRestClient {
+                addInterceptor(HttpLoggingInterceptor().apply {
+                    level = HttpLoggingInterceptor.Level.BODY
+                })
+            }
         }
     }
 }

@@ -3,4 +3,9 @@
     <string name="user_list">User List</string>
 
     <string name="add_user">Add user</string>
+    <string name="user_name">User Name</string>
+    <string name="email">Email</string>
+
+    <string name="email_error_empty">Email should not be empty</string>
+    <string name="name_error_empty">Name should not be empty</string>
 </resources>

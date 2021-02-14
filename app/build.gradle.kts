@@ -92,6 +92,7 @@ dependencies {
     // region Jetpack & UI specific
     implementation("androidx.core:core-ktx")
     implementation("androidx.activity:activity-ktx")
+    implementation("androidx.fragment:fragment-ktx")
     implementation("androidx.appcompat:appcompat")
     implementation("androidx.constraintlayout:constraintlayout")
 
