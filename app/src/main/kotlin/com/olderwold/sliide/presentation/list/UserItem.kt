@@ -12,26 +12,24 @@ internal data class UserItem(
 ) {
     fun relativeTime(context: Context, now: ZonedDateTime = ZonedDateTime.now()): String? {
         val fromDateTime = user.createdAt ?: return null
-        val toDateTime = now
-
         var tempDateTime = ZonedDateTime.from(fromDateTime)
 
-        val years = tempDateTime.until(toDateTime, ChronoUnit.YEARS)
+        val years = tempDateTime.until(now, ChronoUnit.YEARS)
         tempDateTime = tempDateTime.plusYears(years)
 
-        val months = tempDateTime.until(toDateTime, ChronoUnit.MONTHS)
+        val months = tempDateTime.until(now, ChronoUnit.MONTHS)
         tempDateTime = tempDateTime.plusMonths(months)
 
-        val days = tempDateTime.until(toDateTime, ChronoUnit.DAYS)
+        val days = tempDateTime.until(now, ChronoUnit.DAYS)
         tempDateTime = tempDateTime.plusDays(days)
 
-        val hours = tempDateTime.until(toDateTime, ChronoUnit.HOURS)
+        val hours = tempDateTime.until(now, ChronoUnit.HOURS)
         tempDateTime = tempDateTime.plusHours(hours)
 
-        val minutes = tempDateTime.until(toDateTime, ChronoUnit.MINUTES)
+        val minutes = tempDateTime.until(now, ChronoUnit.MINUTES)
         tempDateTime = tempDateTime.plusMinutes(minutes)
 
-        val seconds = tempDateTime.until(toDateTime, ChronoUnit.SECONDS)
+        val seconds = tempDateTime.until(now, ChronoUnit.SECONDS)
 
         return when {
             years >= 1 -> {
