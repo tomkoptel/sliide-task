@@ -10,6 +10,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.Single
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
+import org.jetbrains.annotations.TestOnly
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,30 +19,32 @@ internal class UserListViewModel @Inject constructor(
     private val deleteUser: DeleteUser,
     private val rxOperators: RxOperators,
 ) : RxViewModel() {
-    private val _state = MutableLiveData<State>()
+    @get:TestOnly
+    val mutableState = MutableLiveData<State>()
 
-    val state: LiveData<State> = _state
+    val state: LiveData<State> = mutableState
 
     fun load() {
         val value = state.value
         if (value is State.Loaded) return
 
-        _state.value = State.Loading
+        mutableState.value = State.Loading
         loadData()
     }
 
     fun delete(item: UserItem) {
-        val value = _state.value
+        val value = mutableState.value
         if (value is State.Loaded) {
             deleteUser(item.user)
+                .onErrorComplete()
                 .doOnSubscribe { markItemAsToBeDeleted(value, item) }
                 .andThen(getLatestUsers())
                 .subscribeBy(
                     onSuccess = { userList ->
-                        _state.postValue(State.Loaded(userList))
+                        mutableState.postValue(State.Loaded(userList))
                     },
                     onError = { error ->
-                        _state.postValue(State.Error(error))
+                        mutableState.postValue(State.Error(error))
                     }
                 )
                 .addTo(compositeDisposable)
@@ -57,11 +60,11 @@ internal class UserListViewModel @Inject constructor(
         modifiedUsers.removeAt(position)
         modifiedUsers.add(position, user.copy(toBeDeleted = true))
 
-        _state.postValue(State.Loaded(modifiedUsers))
+        mutableState.postValue(State.Loaded(modifiedUsers))
     }
 
     fun reload() {
-        _state.value = State.Loading
+        mutableState.value = State.Loading
         loadData()
     }
 
@@ -69,10 +72,10 @@ internal class UserListViewModel @Inject constructor(
         getLatestUsers()
             .subscribeBy(
                 onSuccess = { userList ->
-                    _state.postValue(State.Loaded(userList))
+                    mutableState.postValue(State.Loaded(userList))
                 },
                 onError = { error ->
-                    _state.postValue(State.Error(error))
+                    mutableState.postValue(State.Error(error))
                 }
             )
             .addTo(compositeDisposable)
