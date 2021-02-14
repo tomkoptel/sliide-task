@@ -1,8 +1,8 @@
 package com.olderwold.sliide.data.usecase
 
 import com.olderwold.sliide.data.GoRestClient
-import com.olderwold.sliide.domain.usecase.DeleteUser
 import com.olderwold.sliide.domain.User
+import com.olderwold.sliide.domain.usecase.DeleteUser
 import com.olderwold.sliide.rx.Schedulers
 import dagger.Binds
 import dagger.hilt.InstallIn

@@ -1,8 +1,6 @@
 package com.olderwold.sliide.data.mapper
 
 import com.olderwold.sliide.data.dto.SubmitUserDTO
-import com.olderwold.sliide.data.mapper.GenderStatusMapper
-import com.olderwold.sliide.data.mapper.UserStatusMapper
 import com.olderwold.sliide.domain.User
 
 internal class SubmitUserMapper(

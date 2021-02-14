@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SingleEvent
 import androidx.lifecycle.toEvent
 import com.olderwold.sliide.R
-import com.olderwold.sliide.domain.usecase.CreateUser
 import com.olderwold.sliide.domain.User
+import com.olderwold.sliide.domain.usecase.CreateUser
 import com.olderwold.sliide.rx.RxOperators
 import com.olderwold.sliide.rx.RxViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

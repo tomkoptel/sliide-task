@@ -9,9 +9,9 @@ import com.olderwold.sliide.data.dto.UserMapper
 import com.olderwold.sliide.data.gson.GsonFactory
 import com.olderwold.sliide.data.mapper.GenderStatusMapper
 import com.olderwold.sliide.data.mapper.PaginationMapper
+import com.olderwold.sliide.data.mapper.SubmitUserMapper
 import com.olderwold.sliide.data.mapper.UserListMapper
 import com.olderwold.sliide.data.mapper.UserStatusMapper
-import com.olderwold.sliide.data.mapper.SubmitUserMapper
 import com.olderwold.sliide.domain.User
 import com.olderwold.sliide.domain.UserList
 import dagger.Provides

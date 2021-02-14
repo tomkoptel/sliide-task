@@ -1,10 +1,10 @@
 package com.olderwold.sliide.presentation.list
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.olderwold.sliide.domain.usecase.DeleteUser
-import com.olderwold.sliide.domain.usecase.GetLatestUserList
 import com.olderwold.sliide.domain.User
 import com.olderwold.sliide.domain.UserList
+import com.olderwold.sliide.domain.usecase.DeleteUser
+import com.olderwold.sliide.domain.usecase.GetLatestUserList
 import com.olderwold.sliide.rx.RxOperators
 import io.mockk.every
 import io.mockk.mockk
