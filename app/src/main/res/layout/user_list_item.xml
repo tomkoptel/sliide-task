@@ -9,7 +9,6 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:padding="@dimen/keyline_small"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -18,6 +17,9 @@
             style="?textAppearanceBody1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/keyline_default"
+            android:layout_marginEnd="@dimen/keyline_default"
+            android:layout_marginTop="@dimen/keyline_default"
             app:layout_constraintBottom_toTopOf="@+id/name"
             app:layout_constraintEnd_toStartOf="@+id/created"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +32,10 @@
             style="?textAppearanceBody2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/keyline_default"
+            android:layout_marginEnd="@dimen/keyline_default"
+            android:layout_marginTop="@dimen/keyline_small"
+            android:layout_marginBottom="@dimen/keyline_default"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,10 +47,12 @@
             style="?textAppearanceCaption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/keyline_default"
+            app:layout_constraintBottom_toBottomOf="@+id/email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/email"
-            app:layout_constraintTop_toTopOf="@+id/email"
             app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintTop_toTopOf="@+id/email"
             tools:text="2 days ago" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

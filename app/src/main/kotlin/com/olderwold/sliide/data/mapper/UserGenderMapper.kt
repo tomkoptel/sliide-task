@@ -3,7 +3,7 @@ package com.olderwold.sliide.data.mapper
 import com.olderwold.sliide.domain.User
 import java.util.Locale
 
-internal class GenderStatusMapper(
+internal class UserGenderMapper(
     private val expectedLocale: Locale = Locale.ENGLISH
 ) {
     fun map(status: User.Gender): String {

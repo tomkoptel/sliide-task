@@ -1,7 +1,6 @@
 package com.olderwold.sliide.data.dto
 
 import com.google.gson.annotations.SerializedName
-import java.time.LocalDateTime
 import java.time.ZonedDateTime
 
 internal data class UserDto(
