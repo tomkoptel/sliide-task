@@ -7,19 +7,24 @@ import com.google.gson.JsonElement
 import java.lang.reflect.Type
 import java.time.LocalDateTime
 import java.time.ZonedDateTime
+import java.time.format.DateTimeParseException
 
 @SuppressLint("NewApi")
-object LocalDateTimeDeserializer : JsonDeserializer<LocalDateTime?> {
+object DateTimeDeserializer : JsonDeserializer<ZonedDateTime?> {
     @Suppress("ReturnCount")
     override fun deserialize(
         json: JsonElement?,
         typeOfT: Type?,
         context: JsonDeserializationContext?
-    ): LocalDateTime? {
+    ): ZonedDateTime? {
         if (json == null) return null
         if (json.isJsonNull) return null
         if (!json.isJsonPrimitive) return null
         val rawDate = json.asJsonPrimitive.asString
-        return ZonedDateTime.parse(rawDate).toLocalDateTime()
+        return try {
+            ZonedDateTime.parse(rawDate)
+        } catch (ex: DateTimeParseException) {
+            null
+        }
     }
 }

@@ -11,4 +11,40 @@
 
     <string name="dialog_delete_user_title">Delete User</string>
     <string name="dialog_delete_user_message">Do you want to delete user %s?</string>
+
+    <plurals name="year">
+        <item quantity="one">%d year ago</item>
+        <item quantity="many">%d years ago</item>
+        <item quantity="other">%d years ago</item>
+    </plurals>
+
+    <plurals name="month">
+        <item quantity="one">%d month ago</item>
+        <item quantity="many">%d months ago</item>
+        <item quantity="other">%d months ago</item>
+    </plurals>
+
+    <plurals name="day">
+        <item quantity="one">%d day ago</item>
+        <item quantity="many">%d days ago</item>
+        <item quantity="other">%d days ago</item>
+    </plurals>
+
+    <plurals name="hour">
+        <item quantity="one">%d hour ago</item>
+        <item quantity="many">%d hours ago</item>
+        <item quantity="other">%d hours ago</item>
+    </plurals>
+
+    <plurals name="minute">
+        <item quantity="one">%d minute ago</item>
+        <item quantity="many">%d minutes ago</item>
+        <item quantity="other">%d minutes ago</item>
+    </plurals>
+
+    <plurals name="second">
+        <item quantity="one">%d second ago</item>
+        <item quantity="many">%d seconds ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
 </resources>

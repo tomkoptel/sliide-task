@@ -1,6 +1,6 @@
 package com.olderwold.sliide.domain
 
-import java.time.LocalDateTime
+import java.time.ZonedDateTime
 import java.util.UUID
 
 internal data class User(
@@ -9,8 +9,8 @@ internal data class User(
     val email: String? = null,
     val status: Status = Status.ACTIVE,
     val gender: Gender = Gender.MALE,
-    val createdAt: LocalDateTime? = null,
-    val updatedAt: LocalDateTime? = null,
+    val createdAt: ZonedDateTime? = null,
+    val updatedAt: ZonedDateTime? = null,
 ) {
     companion object {
         fun new(build: (Builder) -> Unit): User {
