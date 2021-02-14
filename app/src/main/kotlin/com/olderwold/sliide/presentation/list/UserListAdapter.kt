@@ -71,7 +71,7 @@ internal class UserListAdapter(
             val user = item.user
             emailTextView.text = user.email
             nameTextView.text = user.name
-            createdTextView.text = user.createdAt?.toString()
+            createdTextView.text = item.relativeTime(containerView.context)
         }
 
         private fun updateColorState(item: UserItem) {

@@ -5,6 +5,7 @@ import org.amshove.kluent.shouldBeNull
 import org.amshove.kluent.shouldNotBeNull
 import org.junit.Test
 import java.time.LocalDateTime
+import java.time.ZonedDateTime
 
 class GsonFactoryTest {
     private val gson = GsonFactory().create()
@@ -17,6 +18,16 @@ class GsonFactoryTest {
         )
 
         dto.createdAt.shouldNotBeNull()
+    }
+
+    @Test
+    fun `test deserialization of invalid date`() {
+        val dto = gson.fromJson(
+            "{\"created_at\":\"2021-0230\"}",
+            Dto::class.java
+        )
+
+        dto.createdAt.shouldBeNull()
     }
 
     @Test
@@ -42,6 +53,6 @@ class GsonFactoryTest {
 
     private class Dto(
         @SerializedName("created_at")
-        val createdAt: LocalDateTime?
+        val createdAt: ZonedDateTime?
     )
 }

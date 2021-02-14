@@ -2,10 +2,11 @@ package com.olderwold.sliide.data.dto
 
 import com.google.gson.annotations.SerializedName
 import java.time.LocalDateTime
+import java.time.ZonedDateTime
 
 internal data class UserDto(
     @SerializedName("created_at")
-    val createdAt: LocalDateTime? = null,
+    val createdAt: ZonedDateTime? = null,
     @SerializedName("email")
     val email: String? = null,
     @SerializedName("gender")
@@ -17,5 +18,5 @@ internal data class UserDto(
     @SerializedName("status")
     val status: String? = null,
     @SerializedName("updated_at")
-    val updatedAt: LocalDateTime? = null
+    val updatedAt: ZonedDateTime? = null
 )
