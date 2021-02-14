@@ -22,10 +22,20 @@ internal class UserListViewModel(
     val state: LiveData<State> = _state
 
     fun load() {
+        val value = state.value
+        if (value is State.Loaded) return
+
+        loadData()
+    }
+
+    private fun loadData() {
         rxOperators.onConnected()
-            .flatMap { goRestClient.users }
-            .subscribeOn(schedulers.io())
-            .observeOn(schedulers.ui())
+            .take(1)
+            .doOnSubscribe { _state.postValue(State.Loading) }
+            .flatMapSingle { goRestClient.users }
+            .singleOrError()
+            .subscribeOn(schedulers.io)
+            .observeOn(schedulers.ui)
             .subscribeBy(
                 onSuccess = { userList ->
                     _state.value = State.Loaded(userList.users)

@@ -102,6 +102,7 @@ dependencies {
     testImplementation("io.mockk:mockk-dsl")
     testImplementation("com.airbnb.okreplay:okreplay")
     testImplementation("com.airbnb.okreplay:junit")
+    testImplementation("androidx.arch.core:core-testing")
 
     androidTestImplementation("androidx.test.ext:junit")
     androidTestImplementation("androidx.test.espresso:espresso-core")

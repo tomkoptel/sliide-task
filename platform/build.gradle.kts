@@ -35,6 +35,8 @@ dependencies {
         api("com.airbnb.okreplay:okreplay:$okreplayVersion")
         api("com.airbnb.okreplay:junit:$okreplayVersion")
 
+        api("androidx.arch.core:core-testing:2.1.0")
+
         api("androidx.test.ext:junit:1.1.2")
         api("androidx.test.espresso:espresso-core:3.3.0")
 
