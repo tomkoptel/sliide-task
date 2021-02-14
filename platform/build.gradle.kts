@@ -4,8 +4,10 @@ plugins {
 
 dependencies {
     constraints {
+        api("androidx.activity:activity-ktx:1.2.0")
         api("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
         api("androidx.core:core-ktx:1.3.2")
+
         api("androidx.appcompat:appcompat:1.2.0")
         api("androidx.constraintlayout:constraintlayout:2.0.4")
 
@@ -35,6 +37,8 @@ dependencies {
 
         api("androidx.test.ext:junit:1.1.2")
         api("androidx.test.espresso:espresso-core:3.3.0")
+
+        api("io.reactivex.rxjava2:rxkotlin:2.4.0")
 
         api("io.reactivex.rxjava2:rxjava:2.2.21")
         api("io.reactivex.rxjava2:rxandroid:2.1.1")

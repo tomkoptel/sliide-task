@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="keyline_default">16dp</dimen>
+    <dimen name="keyline_small">8dp</dimen>
+    <dimen name="keyline_tiny">4dp</dimen>
+
+    <dimen name="user_card_height">200dp</dimen>
+</resources>
