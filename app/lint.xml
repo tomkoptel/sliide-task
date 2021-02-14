@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
+    <issue id="UnsafeExperimentalUsageError" severity="ignore"/>
+    <issue id="UnsafeExperimentalUsageWarning" severity="ignore"/>
+    <issue id="DefaultLocale">
+        <ignore path="src/main/kotlin/com/olderwold/sliide/data/GenderStatusMapper.kt"/>
+        <ignore path="src/main/kotlin/com/olderwold/sliide/data/UserStatusMapper.kt"/>
+    </issue>
 </lint>
