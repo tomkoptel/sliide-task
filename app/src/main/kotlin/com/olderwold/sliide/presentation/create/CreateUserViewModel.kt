@@ -3,6 +3,8 @@ package com.olderwold.sliide.presentation.create
 import androidx.annotation.StringRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SingleEvent
+import androidx.lifecycle.toEvent
 import com.olderwold.sliide.R
 import com.olderwold.sliide.domain.CreateUser
 import com.olderwold.sliide.domain.User
@@ -18,16 +20,16 @@ internal class CreateUserViewModel @Inject constructor(
     private val rxOperators: RxOperators,
     private val createUser: CreateUser,
 ) : RxViewModel() {
-    private val _state = MutableLiveData<State?>()
+    private val _state = MutableLiveData<SingleEvent<State>?>()
 
-    val state: LiveData<State?> = _state
+    val state: LiveData<SingleEvent<State>?> = _state
 
     fun create(name: String?, email: String?) {
         val nameError = if (name.isNullOrBlank()) R.string.name_error_empty else null
         val emailError = if (email.isNullOrBlank()) R.string.email_error_empty else null
 
         if (nameError != null || emailError != null) {
-            _state.value = State.Invalid(emailError = emailError, nameError = nameError)
+            _state.value = State.Invalid(emailError = emailError, nameError = nameError).toEvent()
         } else {
             createNewUser(email, name)
         }
@@ -41,7 +43,7 @@ internal class CreateUserViewModel @Inject constructor(
     private fun createNewUser(email: String?, name: String?) {
         rxOperators.onConnected()
             .take(1)
-            .doOnSubscribe { _state.postValue(State.Sending) }
+            .doOnSubscribe { _state.postValue(State.Sending.toEvent()) }
             .flatMapCompletable {
                 createUser(User.new {
                     it.email = email
@@ -50,10 +52,10 @@ internal class CreateUserViewModel @Inject constructor(
             }
             .subscribeBy(
                 onComplete = {
-                    _state.postValue(State.Success)
+                    _state.postValue(State.Success.toEvent())
                 },
                 onError = { error ->
-                    _state.postValue(State.Error(error))
+                    _state.postValue(State.Error(error).toEvent())
                 }
             )
             .addTo(compositeDisposable)

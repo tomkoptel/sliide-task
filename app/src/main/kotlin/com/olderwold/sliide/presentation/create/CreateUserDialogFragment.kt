@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.constraintlayout.widget.Group
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.observeSingleEvents
 import com.olderwold.sliide.R
 import com.olderwold.sliide.presentation.UserListViewModel
 
@@ -59,11 +59,7 @@ internal class CreateUserDialogFragment : DialogFragment(), LifecycleObserver {
             dismiss()
         }
 
-        viewModel.state.observe(viewLifecycleOwner) { state ->
-            if (state !=  null) {
-                bindState(state)
-            }
-        }
+        viewModel.state.observeSingleEvents(viewLifecycleOwner, ::bindState)
     }
 
     override fun onDestroyView() {
