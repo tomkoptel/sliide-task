@@ -2,7 +2,7 @@
 
 ![Android CI with Gradle](https://github.com/tomkoptel/sliide-task/workflows/Android%20CI%20with%20Gradle/badge.svg)
 
-## [Get the App](https://github.com/tomkoptel/profile-app/suites/556413120/artifacts/3560017)
+## [Get the App](https://github.com/tomkoptel/sliide-task/actions/runs/566599172)
 You can find the latest version inside [Actions Tab](https://github.com/tomkoptel/sliide-task/actions).
 
 ## Architecture
