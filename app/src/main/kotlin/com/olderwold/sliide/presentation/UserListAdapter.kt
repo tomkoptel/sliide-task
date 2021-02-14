@@ -3,7 +3,9 @@ package com.olderwold.sliide.presentation
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.getValueFromAttr
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -33,8 +35,25 @@ internal class UserListAdapter(
 
         fun bind(item: UserItem) {
             bindCallbacks(item)
+            bindForeground(item)
             bindUserData(item)
             updateColorState(item)
+        }
+
+        private fun bindForeground(item: UserItem) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                if (item.toBeDeleted) {
+                    containerView.foreground = null
+                } else {
+                    val selectableItemBackground = containerView.getValueFromAttr(
+                        android.R.attr.selectableItemBackground
+                    )
+                    containerView.foreground = ContextCompat.getDrawable(
+                        containerView.context,
+                        selectableItemBackground
+                    )
+                }
+            }
         }
 
         private fun bindCallbacks(item: UserItem) {
@@ -62,7 +81,12 @@ internal class UserListAdapter(
                 android.R.color.white
             }
             val color = ContextCompat.getColor(containerView.context, colorRes)
-            containerView.setBackgroundColor(color)
+
+            if (containerView is CardView) {
+                containerView.setCardBackgroundColor(color)
+            } else {
+                containerView.setBackgroundColor(color)
+            }
         }
     }
 
