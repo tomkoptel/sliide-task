@@ -4,7 +4,7 @@ import com.olderwold.sliide.data.dto.SubmitUserDTO
 import com.olderwold.sliide.domain.User
 
 internal class SubmitUserMapper(
-    private val genderStatusMapper: GenderStatusMapper,
+    private val userGenderMapper: UserGenderMapper,
     private val userStatusMapper: UserStatusMapper,
 ) {
     fun map(user: User): SubmitUserDTO {
@@ -12,7 +12,7 @@ internal class SubmitUserMapper(
         return SubmitUserDTO(
             name = name,
             email = email,
-            gender = genderStatusMapper.map(gender),
+            gender = userGenderMapper.map(gender),
             status = userStatusMapper.map(status),
         )
     }

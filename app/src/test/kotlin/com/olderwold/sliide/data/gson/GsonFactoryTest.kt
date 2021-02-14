@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName
 import org.amshove.kluent.shouldBeNull
 import org.amshove.kluent.shouldNotBeNull
 import org.junit.Test
-import java.time.LocalDateTime
 import java.time.ZonedDateTime
 
 class GsonFactoryTest {

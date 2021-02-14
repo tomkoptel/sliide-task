@@ -7,9 +7,9 @@ import com.olderwold.sliide.data.dto.SubmitUserDTO
 import com.olderwold.sliide.data.dto.UserListDTO
 import com.olderwold.sliide.data.dto.UserMapper
 import com.olderwold.sliide.data.gson.GsonFactory
-import com.olderwold.sliide.data.mapper.GenderStatusMapper
 import com.olderwold.sliide.data.mapper.PaginationMapper
 import com.olderwold.sliide.data.mapper.SubmitUserMapper
+import com.olderwold.sliide.data.mapper.UserGenderMapper
 import com.olderwold.sliide.data.mapper.UserListMapper
 import com.olderwold.sliide.data.mapper.UserStatusMapper
 import com.olderwold.sliide.domain.User
@@ -58,7 +58,7 @@ internal interface GoRestClient {
                 .build()
                 .create(Api::class.java)
 
-            val genderStatusMapper = GenderStatusMapper()
+            val genderStatusMapper = UserGenderMapper()
             val userStatusMapper = UserStatusMapper()
             val userDtoMapper = UserMapper(genderStatusMapper, userStatusMapper)
             return Impl(
