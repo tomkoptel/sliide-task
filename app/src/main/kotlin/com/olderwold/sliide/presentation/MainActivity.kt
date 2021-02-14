@@ -18,7 +18,6 @@ import com.olderwold.sliide.data.GoRestClient
 import com.olderwold.sliide.rx.RxOperators
 import com.olderwold.sliide.rx.Schedulers
 
-
 class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<UserListViewModel> {
         val context = applicationContext as Application

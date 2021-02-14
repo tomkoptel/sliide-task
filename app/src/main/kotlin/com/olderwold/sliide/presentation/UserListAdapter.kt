@@ -23,7 +23,7 @@ internal class UserListAdapter : ListAdapter<User, UserListAdapter.VH>(UserDiff)
 
     class VH(
         containerView: View
-    ): RecyclerView.ViewHolder(containerView) {
+    ) : RecyclerView.ViewHolder(containerView) {
         private val emailTextView = containerView.findViewById<TextView>(R.id.email)
         private val nameTextView = containerView.findViewById<TextView>(R.id.name)
         private val createdTextView = containerView.findViewById<TextView>(R.id.created)
