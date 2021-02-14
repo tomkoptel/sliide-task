@@ -4,4 +4,6 @@
     <dimen name="keyline_tiny">4dp</dimen>
 
     <dimen name="user_card_height">200dp</dimen>
+    <dimen name="user_dialog_height">200dp</dimen>
+    <dimen name="user_dialog_width">300dp</dimen>
 </resources>

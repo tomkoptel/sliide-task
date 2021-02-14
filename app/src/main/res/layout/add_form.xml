@@ -2,38 +2,41 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:minWidth="@dimen/user_dialog_width"
+    android:minHeight="@dimen/user_dialog_height">
 
     <EditText
         android:id="@+id/name"
-        android:hint="@string/user_name"
-        android:inputType="text"
-        android:layout_marginTop="@dimen/keyline_small"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/keyline_default"
+        android:layout_marginTop="@dimen/keyline_small"
         android:layout_marginEnd="@dimen/keyline_default"
+        android:autofillHints="false"
+        android:hint="@string/user_name"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@id/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintVertical_chainStyle="packed"
-        android:autofillHints="false" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
         android:id="@+id/email"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/keyline_default"
         android:layout_marginEnd="@dimen/keyline_default"
+        android:autofillHints="false"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        android:autofillHints="false" />
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <Button
         android:id="@+id/cancel"
@@ -54,7 +57,7 @@
 
     <Button
         android:id="@+id/ok"
-        style="?materialButtonOutlinedStyle"
+        style="?materialButtonToggleGroupStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/keyline_small"
@@ -69,17 +72,18 @@
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/form"
-        app:constraint_referenced_ids="name, email, cancel, ok"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="name, email, cancel, ok" />
 
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

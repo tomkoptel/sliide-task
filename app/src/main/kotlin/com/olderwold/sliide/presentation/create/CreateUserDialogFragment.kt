@@ -55,6 +55,9 @@ internal class CreateUserDialogFragment : DialogFragment(), LifecycleObserver {
 
             viewModel.create(name, email)
         }
+        cancelButton.setOnClickListener {
+            dismiss()
+        }
 
         viewModel.state.observe(viewLifecycleOwner) { state ->
             if (state !=  null) {
