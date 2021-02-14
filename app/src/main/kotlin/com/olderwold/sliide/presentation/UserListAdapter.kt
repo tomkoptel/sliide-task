@@ -10,18 +10,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.olderwold.sliide.R
 import com.olderwold.sliide.domain.User
 
-internal class UserListAdapter : ListAdapter<User, UserListAdapter.VH>(UserDiff) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+internal class UserListAdapter : ListAdapter<User, UserListAdapter.ViewHolder>(UserDiff) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater.inflate(R.layout.user_list_item, parent, false)
-        return VH(view)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: VH, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class VH(
+    class ViewHolder(
         containerView: View
     ) : RecyclerView.ViewHolder(containerView) {
         private val emailTextView = containerView.findViewById<TextView>(R.id.email)
