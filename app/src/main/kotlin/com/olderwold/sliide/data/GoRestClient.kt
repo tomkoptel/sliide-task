@@ -14,9 +14,12 @@ import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 internal interface GoRestClient {
     val users: Single<UserList>
+
+    fun users(page: Int): Single<UserList>
 
     fun create(user: User): Single<User>
 
@@ -58,6 +61,10 @@ internal interface GoRestClient {
         private val submitMapper: SubmitUserDTO.Mapper,
         private val userDTOMapper: UserDto.Mapper,
     ) : GoRestClient {
+        override fun users(page: Int): Single<UserList> {
+            return api.users(page).map(userListMapper::map)
+        }
+
         override val users: Single<UserList>
             get() {
                 return api.users().map(userListMapper::map)
@@ -78,6 +85,9 @@ internal interface GoRestClient {
     }
 
     private interface Api {
+        @GET("/public-api/users")
+        fun users(@Query("page") page: Int): Single<UserListDTO>
+
         @GET("/public-api/users")
         fun users(): Single<UserListDTO>
 

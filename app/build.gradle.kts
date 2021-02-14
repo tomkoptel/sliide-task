@@ -78,6 +78,7 @@ dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs")
 
     implementation("androidx.core:core-ktx")
+    implementation("androidx.activity:activity-ktx")
     implementation("androidx.appcompat:appcompat")
     implementation("androidx.constraintlayout:constraintlayout")
 
@@ -92,6 +93,7 @@ dependencies {
 
     implementation("io.reactivex.rxjava2:rxjava")
     implementation("io.reactivex.rxjava2:rxandroid")
+    implementation("io.reactivex.rxjava2:rxkotlin")
     implementation("com.github.pwittchen:reactivenetwork-rx2")
 
     testImplementation("junit:junit")
@@ -100,6 +102,7 @@ dependencies {
     testImplementation("io.mockk:mockk-dsl")
     testImplementation("com.airbnb.okreplay:okreplay")
     testImplementation("com.airbnb.okreplay:junit")
+    testImplementation("androidx.arch.core:core-testing")
 
     androidTestImplementation("androidx.test.ext:junit")
     androidTestImplementation("androidx.test.espresso:espresso-core")

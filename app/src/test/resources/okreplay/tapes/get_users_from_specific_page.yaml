@@ -1,0 +1,41 @@
+!tape
+name: get users from specific page
+interactions:
+- recorded: 2021-02-14T15:08:09.707Z
+  request:
+    method: GET
+    uri: https://gorest.co.in/public-api/users?page=2
+    headers:
+      Authorization: Bearer 6332def0dc7cda5bf0a7cb46f442f0812d05758f1e061f85b53f796b96b17013
+  response:
+    status: 200
+    headers:
+      Cache-Control: max-age=0, private, must-revalidate
+      Connection: keep-alive
+      Content-Type: application/json; charset=utf-8
+      Date: Sun, 14 Feb 2021 15:08:09 GMT
+      ETag: W/"2308fd4493bdcbed4732d5563f83ccf9"
+      Expect-CT: enforce; max-age=3600
+      Referrer-Policy: strict-origin-when-cross-origin
+      Server: nginx
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      Transfer-Encoding: chunked
+      Vary: Origin
+      X-Content-Type-Options: nosniff
+      X-Download-Options: noopen
+      X-Frame-Options: sameorigin
+      X-Permitted-Cross-Domain-Policies: none
+      X-Request-Id: 7f6736fb-f3be-4cd8-9077-1ae14625a235
+      X-Runtime: '0.020776'
+      X-XSS-Protection: 1; mode=block
+    body: '{"code":200,"meta":{"pagination":{"total":1415,"pages":71,"page":2,"limit":20}},"data":[{"id":50,"name":"Vaishvi Pothuvaal","email":"vaishvi_pothuvaal@von.info","gender":"Male","status":"Active","created_at":"2021-02-14T03:50:04.054+05:30","updated_at":"2021-02-14T03:50:04.054+05:30"},{"id":51,"name":"Rep.
+      Omana Sinha","email":"rep_omana_sinha@kub.com","gender":"Female","status":"Inactive","created_at":"2021-02-14T03:50:04.085+05:30","updated_at":"2021-02-14T03:50:04.085+05:30"},{"id":53,"name":"Gautama Varman","email":"varman_gautama@glover.info","gender":"Male","status":"Active","created_at":"2021-02-14T03:50:04.125+05:30","updated_at":"2021-02-14T03:50:04.125+05:30"},{"id":54,"name":"Kalyani
+      Nayar","email":"kalyani_nayar@kreiger.io","gender":"Female","status":"Inactive","created_at":"2021-02-14T03:50:04.133+05:30","updated_at":"2021-02-14T03:50:04.133+05:30"},{"id":55,"name":"Vasundhara Dutta","email":"dutta_vasundhara@schuster.io","gender":"Male","status":"Inactive","created_at":"2021-02-14T03:50:04.152+05:30","updated_at":"2021-02-14T03:50:04.152+05:30"},{"id":56,"name":"Archan
+      Gandhi","email":"gandhi_archan@franecki.io","gender":"Male","status":"Inactive","created_at":"2021-02-14T03:50:04.168+05:30","updated_at":"2021-02-14T03:50:04.168+05:30"},{"id":57,"name":"Abhirath Kapoor","email":"abhirath_kapoor@shields-murphy.org","gender":"Male","status":"Inactive","created_at":"2021-02-14T03:50:04.184+05:30","updated_at":"2021-02-14T03:50:04.184+05:30"},{"id":58,"name":"Chandira
+      Kaul","email":"kaul_chandira@anderson.com","gender":"Female","status":"Active","created_at":"2021-02-14T03:50:04.217+05:30","updated_at":"2021-02-14T03:50:04.217+05:30"},{"id":59,"name":"Dhanpati Agarwal","email":"dhanpati_agarwal@green-harris.biz","gender":"Male","status":"Inactive","created_at":"2021-02-14T03:50:04.235+05:30","updated_at":"2021-02-14T03:50:04.235+05:30"},{"id":60,"name":"Daevi
+      Pothuvaal","email":"daevi_pothuvaal@turcotte.io","gender":"Female","status":"Inactive","created_at":"2021-02-14T03:50:04.253+05:30","updated_at":"2021-02-14T03:50:04.253+05:30"},{"id":61,"name":"Abhaidev Trivedi","email":"trivedi_abhaidev@bergstrom.name","gender":"Male","status":"Active","created_at":"2021-02-14T03:50:04.260+05:30","updated_at":"2021-02-14T03:50:04.260+05:30"},{"id":62,"name":"Rep.
+      Susheel Bharadwaj","email":"bharadwaj_rep_susheel@okuneva.name","gender":"Male","status":"Active","created_at":"2021-02-14T03:50:04.265+05:30","updated_at":"2021-02-14T03:50:04.265+05:30"},{"id":63,"name":"Amish Varma","email":"varma_amish@strosin-rowe.com","gender":"Female","status":"Active","created_at":"2021-02-14T03:50:04.271+05:30","updated_at":"2021-02-14T03:50:04.271+05:30"},{"id":65,"name":"Amb.
+      Deeptiman Mehra","email":"deeptiman_amb_mehra@kuphal.info","gender":"Male","status":"Inactive","created_at":"2021-02-14T03:50:04.299+05:30","updated_at":"2021-02-14T03:50:04.299+05:30"},{"id":66,"name":"Aditya Somayaji","email":"aditya_somayaji@stanton.info","gender":"Female","status":"Inactive","created_at":"2021-02-14T03:50:04.311+05:30","updated_at":"2021-02-14T03:50:04.311+05:30"},{"id":67,"name":"Mrs.
+      Garud Sethi","email":"garud_sethi_mrs@swift.biz","gender":"Female","status":"Active","created_at":"2021-02-14T03:50:04.326+05:30","updated_at":"2021-02-14T03:50:04.326+05:30"},{"id":68,"name":"Akshayakeerti Banerjee","email":"akshayakeerti_banerjee@jacobson.com","gender":"Female","status":"Active","created_at":"2021-02-14T03:50:04.342+05:30","updated_at":"2021-02-14T03:50:04.342+05:30"},{"id":69,"name":"Yogesh
+      Asan","email":"yogesh_asan@wilkinson-pagac.net","gender":"Male","status":"Active","created_at":"2021-02-14T03:50:04.351+05:30","updated_at":"2021-02-14T03:50:04.351+05:30"},{"id":70,"name":"Bahula Varrier","email":"varrier_bahula@hickle.info","gender":"Male","status":"Active","created_at":"2021-02-14T03:50:04.373+05:30","updated_at":"2021-02-14T03:50:04.373+05:30"},{"id":71,"name":"Chandramohan
+      Iyer","email":"iyer_chandramohan@kertzmann.biz","gender":"Female","status":"Inactive","created_at":"2021-02-14T03:50:04.391+05:30","updated_at":"2021-02-14T03:50:04.391+05:30"}]}'
