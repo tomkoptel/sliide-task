@@ -26,7 +26,6 @@ internal class NetworkGetLatestUserList @Inject constructor(
         val pagination = pagination
         return if (pagination == null) {
             goRestClient.users
-                .subscribeOn(schedulers.io)
                 .doOnSuccess { result ->
                     this.pagination = result.pagination
                 }
@@ -42,7 +41,7 @@ internal class NetworkGetLatestUserList @Inject constructor(
                 }
         } else {
             getUsersForLastPage(pagination)
-        }
+        }.subscribeOn(schedulers.io)
     }
 
     private fun getUsersForLastPage(pagination: Pagination): Single<UserList> {

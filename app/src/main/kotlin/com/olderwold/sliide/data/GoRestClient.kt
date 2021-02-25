@@ -1,6 +1,7 @@
 package com.olderwold.sliide.data
 
 import android.annotation.SuppressLint
+import android.app.Application
 import com.olderwold.sliide.data.dto.DeleteUserDto
 import com.olderwold.sliide.data.dto.NewUserDTO
 import com.olderwold.sliide.data.dto.SubmitUserDTO
@@ -19,6 +20,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.reactivex.Completable
 import io.reactivex.Single
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -30,6 +32,8 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
+import java.io.File
+import java.util.concurrent.TimeUnit
 
 internal interface GoRestClient {
     val users: Single<UserList>
@@ -100,9 +104,11 @@ internal interface GoRestClient {
     }
 
     private interface Api {
+        @Cacheable(until = 1, unit = TimeUnit.MINUTES)
         @GET("/public-api/users")
         fun users(@Query("page") page: Int): Single<UserListDTO>
 
+        @Cacheable(until = 1, unit = TimeUnit.MINUTES)
         @GET("/public-api/users")
         fun users(): Single<UserListDTO>
 
@@ -120,9 +126,20 @@ internal interface GoRestClient {
     @InstallIn(SingletonComponent::class)
     @dagger.Module
     class Module {
+        companion object {
+            const val cacheSize = 100 * 1024 * 1024 // 100 MiB
+        }
+
         @Provides
-        fun client(): GoRestClient {
+        fun client(application: Application): GoRestClient {
+            val httpCacheDirectory = File(application.cacheDir, "http-cache")
+
+            val cache = Cache(httpCacheDirectory, cacheSize.toLong())
+
             return GoRestClient {
+                cache(cache)
+                addNetworkInterceptor(NetworkInterceptor()) // only used when network is on
+                addInterceptor(OfflineCacheInterceptor(application))
                 addInterceptor(
                     HttpLoggingInterceptor().apply {
                         level = HttpLoggingInterceptor.Level.BODY

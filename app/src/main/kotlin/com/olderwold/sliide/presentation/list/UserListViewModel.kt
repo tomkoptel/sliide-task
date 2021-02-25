@@ -81,14 +81,9 @@ internal class UserListViewModel @Inject constructor(
             .addTo(compositeDisposable)
     }
 
-    private fun getLatestUsers(): Single<List<UserItem>> = rxOperators.onConnected()
-        .take(1)
-        .flatMapSingle {
-            getLatestUserList().map { result ->
-                result.users.map { UserItem(it, toBeDeleted = false) }
-            }
-        }
-        .singleOrError()
+    private fun getLatestUsers(): Single<List<UserItem>> = getLatestUserList().map { result ->
+        result.users.map { UserItem(it, toBeDeleted = false) }
+    }
 
     sealed class State {
         object Loading : State()
