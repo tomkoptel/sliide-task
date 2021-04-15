@@ -17,6 +17,7 @@ dependencies {
         val okhttpVersion = "4.4.1"
         api("com.squareup.okhttp3:okhttp:$okhttpVersion")
         api("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
+        api("com.squareup.okhttp3:mockwebserver:$okhttpVersion")
 
         val retrofitVersion = "2.9.0"
         api("com.squareup.retrofit2:retrofit:$retrofitVersion")
