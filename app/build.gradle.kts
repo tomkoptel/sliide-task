@@ -106,6 +106,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson")
     implementation("com.squareup.retrofit2:adapter-rxjava2")
     implementation("com.google.code.gson:gson")
+    implementation("com.squareup.okhttp3:mockwebserver")
 
     implementation("io.reactivex.rxjava2:rxjava")
     implementation("io.reactivex.rxjava2:rxandroid")
