@@ -42,7 +42,10 @@ internal interface GoRestClient {
 
     companion object {
         @SuppressLint("NewApi")
-        operator fun invoke(clientBuilder: OkHttpClient.Builder.() -> Unit = {}): GoRestClient {
+        operator fun invoke(
+            retrofitBuilder: Retrofit.Builder.() -> Unit = {},
+            clientBuilder: OkHttpClient.Builder.() -> Unit = {}
+        ): GoRestClient {
             val gson = GsonFactory().create()
 
             val api = Retrofit.Builder()
@@ -55,6 +58,7 @@ internal interface GoRestClient {
                         .apply(clientBuilder)
                         .build()
                 )
+                .apply(retrofitBuilder)
                 .build()
                 .create(Api::class.java)
 
